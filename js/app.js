@@ -1,26 +1,40 @@
-// MILESTONE 1 
-
 
 const slideElements = document.getElementsByClassName('slide')
 
 let indexActiveSlide = 0
 
-
-
-// Riproduco il markup delle slides con js
-
-// creo un array delle img 
-
-const slideImages= [
-    './img/img-1.jpeg',
-    './img/img-2.jpeg',
-    './img/img-3.jpeg',
-    './img/img-4.jpeg',
-    './img/img-5.jpg',
-    './img/img-6.jpg'
+const slideImages = [
+    {
+        image: './img/img-1.jpeg',
+        title: "Guard ò mar quant'è bell",
+        text: 'Mare del folfo di Napoli in tempresta',
+    },    
+    {
+        image: './img/img-2.jpeg',
+        title: "Pinocchio, atto primo.",
+        text: 'Tavole del patio da spazzare',
+    },
+    {
+        image: './img/img-3.jpeg',
+        title: "AUGH!.",
+        text: 'Scaccia sogni di età pre coloniale',
+    },
+    {
+        image: './img/img-4.jpeg',
+        title: "Mbare! L'etna si sta svegliando!",
+        text: 'Altopiano vulcanico siculo in prospettiva',
+    },
+    {
+        image: './img/img-5.jpg',
+        title: "Chi me l'ha fatto fare",
+        text: 'Cercando di studiare js',
+    },
+    {
+        image: './img/img-6.jpg',
+        title: "3,2,1, Buon anno!",
+        text: 'Festeggiamenti di capodanno in Wyoming',
+    },
 ]
-
-console.log(slideImages)
 
 // rivchiamo il container delle img dall html
 
@@ -28,35 +42,50 @@ const carouselSection = document.getElementById('carousel-section')
 
 let htmlItem
 
-for ( let i = 0; i < slideImages.length; i++  ){
+for (let i = 0; i < slideImages.length; i++) {
+	const slide = slideImages[i]
+	const image = slide.image
+	const title = slide.title
+    const text = slide.text
 
     let srcImage = slideImages[i]
 
     console.log(slideImages[i])
-
+    
     if (i === 0){
-
+    
         htmlItem =
-        `<div class="slide active">
-            <img src="${srcImage}" alt="">
-        </div>`
-
+        `
+        <div class="slide active">
+            <img src="${image}" class="card-img-top rounded mt-3" alt="#">
+            <h5 class="img-title">${title}</h5>
+            <p class="img-text">${text}</p>
+        </div>
+        `
+    
     }else {
-        htmlItem =
-        `<div class="slide">
-            <img src="${srcImage}" alt="">
-        </div>`
-    }
 
+        htmlItem =
+        `
+        <div class="slide">
+            <img src="${image}" class="card-img-top rounded mt-3" alt="#">
+            <h4 class="img-title">${title}</h4>
+            <p class="img-text">${text}</p>
+        </div>
+        `
+    }
+    
     carouselSection.innerHTML += htmlItem
 }
+
+console.log('ciso')
+
 
 
 
 const rightBtnElement = document.getElementById('btnright')
 
 const lastIndex = slideElements.length - 1
-// Creare un carolsello con 6 img
 
 rightBtnElement.addEventListener('click', function () {
 
@@ -109,6 +138,4 @@ leftBtnElement.addEventListener('click', function () {
 	console.log('next slide', indexActiveSlide)
 
 })
-
-// console.log(carouselSection.innerHTML)
 

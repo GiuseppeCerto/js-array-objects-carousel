@@ -76,11 +76,18 @@ for (let i = 0; i < slideImages.length; i++) {
     carouselSection.innerHTML += htmlItem
 }
 
-const rightBtnElement = document.getElementById('btnright')
-
 const lastIndex = slideElements.length - 1
 
-rightBtnElement.onclick = setInterval(rightAutoPlay,3000); 
+const rightBtnElement = document.getElementById('btnright')
+
+rightBtnElement.onclick = corouselPlayRight
+
+function corouselPlayRight (){
+
+    rightAutoPlay ()
+    
+    setInterval(rightAutoPlay, 3000)
+}
 
 function rightAutoPlay (){
 
@@ -103,9 +110,18 @@ function rightAutoPlay (){
 
 const leftBtnElement = document.getElementById('btnleft')
 
-leftBtnElement.onclick = setInterval(leftAutoPlay,3000); 
+leftBtnElement.onclick = corouselPlayLeft
 
-function leftAutoPlay (){
+function corouselPlayLeft (){
+
+    leftAutoPlay ()
+    
+    setInterval(leftAutoPlay, 3000)
+}
+
+function leftAutoPlay () {
+
+    console.log("Bottone sinistro")
 
 	let slideCorrente = slideElements[indexActiveSlide]
 
@@ -127,3 +143,11 @@ function leftAutoPlay (){
 
 }
 
+const pauseBtnElement = document.getElementById('pauseButton')
+
+pauseBtnElement.addEventListener("click", stopCarousel)
+
+function stopCarousel (){
+    
+    clearInterval(rightAutoPlay)
+}

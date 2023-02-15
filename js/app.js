@@ -85,11 +85,13 @@ console.log('ciso')
 
 const rightBtnElement = document.getElementById('btnright')
 
+
+
 const lastIndex = slideElements.length - 1
 
-rightBtnElement.addEventListener('click', function () {
+rightBtnElement.onclick = setInterval(rightAutoPlay,3000); 
 
-    console.log("Bottone destro")
+function rightAutoPlay (){
 
 	let slideCorrente = slideElements[indexActiveSlide]
 
@@ -106,8 +108,8 @@ rightBtnElement.addEventListener('click', function () {
 	let prossimaSlide = slideElements[indexActiveSlide]
 
 	prossimaSlide.classList.add('active')
+}
 
-})
 
 
 const leftBtnElement = document.getElementById('btnleft')

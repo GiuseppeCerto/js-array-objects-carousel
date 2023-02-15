@@ -36,8 +36,6 @@ const slideImages = [
     },
 ]
 
-// rivchiamo il container delle img dall html
-
 const carouselSection = document.getElementById('carousel-section')
 
 let htmlItem
@@ -78,14 +76,7 @@ for (let i = 0; i < slideImages.length; i++) {
     carouselSection.innerHTML += htmlItem
 }
 
-console.log('ciso')
-
-
-
-
 const rightBtnElement = document.getElementById('btnright')
-
-
 
 const lastIndex = slideElements.length - 1
 
@@ -110,16 +101,11 @@ function rightAutoPlay (){
 	prossimaSlide.classList.add('active')
 }
 
-
-
 const leftBtnElement = document.getElementById('btnleft')
 
+leftBtnElement.onclick = setInterval(leftAutoPlay,3000); 
 
-// Creo il carosello con bottone left per il riavvolgimento delle slides
-
-leftBtnElement.addEventListener('click', function () {
-
-    console.log("Bottone sinistro")
+function leftAutoPlay (){
 
 	let slideCorrente = slideElements[indexActiveSlide]
 
@@ -139,5 +125,5 @@ leftBtnElement.addEventListener('click', function () {
 
 	console.log('next slide', indexActiveSlide)
 
-})
+}
 
